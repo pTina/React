@@ -7,14 +7,19 @@ export default class Board extends Component {
         super(props);
         this.state = {
             squares: Array(9).fill(null),
+            curInput: 'O',
         }
     }
 
     handelClick(i){
         const squares = this.state.squares.slice();
+        let curInput = this.state.curInput;
 
-        squares[i] = 'X';
+        curInput === 'O' ? curInput = 'X' : curInput = 'O';
+        
+        squares[i] = curInput;
         this.setState({ squares: squares });
+        this.setState({ curInput: curInput });
     }
 
     renderSquer(i) {
