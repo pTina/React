@@ -1,4 +1,4 @@
-import Login from './components/login';
+import PageLogin from './components/PageLogin';
 import Container from '@mui/material/Container';
 
 function App() {
@@ -7,7 +7,7 @@ function App() {
         component="main" 
         maxWidth="xs"
     >
-        <Login />
+        <PageLogin />
     </Container>
   );
 }

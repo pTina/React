@@ -1,8 +1,5 @@
 import { initializeApp } from "firebase/app";
-// import { getAnalytics } from "firebase/analytics";
-import { collection, getDocs } from "firebase/firestore";
-import { getFirestore } from "firebase/firestore";
-import { doc, getDoc } from "firebase/firestore";
+import { getFirestore, collection, query, getDocs } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCMUh9bAtkjbWvmMh6ML2loZC6ic4kYeRA",
@@ -17,7 +14,39 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-// const docRef = doc(db, "cities", "SF");
+
+export default async function searchDatabase(_data) {
+    const data = _data;
+    const userType = data.get('userType');
+    const userId = data.get('userId');
+    let collectionName = '';
+
+    switch(userType){
+        case 'student':
+            collectionName = '학생';
+            break;
+        case 'teacher':
+            collectionName = '관리자';
+            break;
+        default:
+            break;
+    }
+
+    const q = query(collection(db, collectionName));
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+        if(doc.id === userId){
+            console.log('eee');
+            return doc.data();
+            
+        }else{
+            alert('회원 정보가 없습니다.');
+            return false;
+        }
+    });
+}
+
+// const docRef = doc(db, "cities", "SF")
 // const docSnap = await getDoc(docRef);
 
 // if (docSnap.exists()) {
@@ -26,8 +55,9 @@ const db = getFirestore(app);
 //   console.log("No such document!");
 // }
 
+// export default searchDatabase;
 
-export { db };
+
 // const analytics = getAnalytics(app);
 // export const db = getFirestore(app);
 
