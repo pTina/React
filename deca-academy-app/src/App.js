@@ -1,13 +1,15 @@
-import PageLogin from './components/PageLogin';
+// import PageLogin from './components/PageLogin';
 import Container from '@mui/material/Container';
+import EntranceTest from './components/EntranceTest'
 
 function App() {
   return (
     <Container 
         component="main" 
-        maxWidth="xs"
+        maxWidth="lg"
     >
-        <PageLogin />
+        {/* <PageLogin />  */}
+        <EntranceTest/>
     </Container>
   );
 }

@@ -1,0 +1,7 @@
+.ListItem > div{
+    margin-right: 10px;
+}
+
+.ListItem > div:last-child{
+    margin-right: 0px;
+}
