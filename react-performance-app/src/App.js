@@ -9,7 +9,7 @@ function App() {
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
-        fetch('htttps://jsonplaceholder.typicode.com/posts')
+        fetch('https://jsonplaceholder.typicode.com/posts')
             .then(response => response.json())
             .then(posts => setPosts(posts))
     }, [])
@@ -23,7 +23,7 @@ function App() {
             />
 
             <div style={{ display: 'flex' }}>
-                <A />
+                <A message={value} posts={posts}/>
                 <B />
             </div>
         </div>
