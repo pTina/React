@@ -19,12 +19,12 @@ function App() {
         <div style={{ padding: '1rem' }}>
             <input 
                 value={value}
-                onChange={e=>setValue(e.target)}
+                onChange={e=>setValue(e.target.value)}
             />
 
             <div style={{ display: 'flex' }}>
                 <A message={value} posts={posts}/>
-                <B />
+                <B message={value} posts={posts}/>
             </div>
         </div>
     );
